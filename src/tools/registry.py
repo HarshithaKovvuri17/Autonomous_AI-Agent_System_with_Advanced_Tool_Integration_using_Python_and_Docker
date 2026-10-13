@@ -76,3 +76,4 @@ class ToolRegistry:
         except Exception as e:
             logger.error(f"Execution failure in tool '{name}': {e}\n{traceback.format_exc()}")
             return f"Execution Error in tool '{name}': {str(e)}"
+
