@@ -110,3 +110,4 @@ class ApiTool(BaseTool):
             return f"HTTP Request Error: Failed to execute request on {url}. Details: {str(e)}"
         except Exception as e:
             return f"Unexpected Error: {str(e)}"
+
