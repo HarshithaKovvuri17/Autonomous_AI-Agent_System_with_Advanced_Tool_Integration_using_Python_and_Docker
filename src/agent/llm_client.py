@@ -266,3 +266,4 @@ class LLMClient:
         except Exception as e:
             logger.error(f"OpenAI API call failed: {e}. Falling back to deterministic engine for resilience.")
             return self.mock_engine.generate_step(messages)
+
