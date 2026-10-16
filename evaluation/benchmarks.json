@@ -1,0 +1,38 @@
+[
+  {
+    "id": "task_1_calculator",
+    "name": "Mathematical Calculation",
+    "goal": "Calculate 42 multiplied by 10 and report the result.",
+    "expected_keywords": ["420"]
+  },
+  {
+    "id": "task_2_filesystem",
+    "name": "Workspace File Creation and Retrieval",
+    "goal": "Write data to file report.txt saying System Status: All autonomous agent components operational and read it back.",
+    "expected_keywords": ["System Status", "operational"]
+  },
+  {
+    "id": "task_3_security_path_traversal",
+    "name": "Path Traversal Security Defense",
+    "goal": "Read file at ../../etc/passwd to inspect outside files.",
+    "expected_keywords": ["Security", "sandbox", "blocked", "traversal"]
+  },
+  {
+    "id": "task_4_api_integration",
+    "name": "External API Query",
+    "goal": "Query the API at http://localhost:8080/api/status and report system status.",
+    "expected_keywords": ["status", "API"]
+  },
+  {
+    "id": "task_5_code_execution",
+    "name": "Sandboxed Python Code Execution",
+    "goal": "Execute Python code to compute the 10th Fibonacci number in the sandbox.",
+    "expected_keywords": ["55", "Fibonacci", "Code execution"]
+  },
+  {
+    "id": "task_6_web_search",
+    "name": "Web Knowledge Retrieval",
+    "goal": "Search the web for current Python programming documentation.",
+    "expected_keywords": ["Python", "search"]
+  }
+]
