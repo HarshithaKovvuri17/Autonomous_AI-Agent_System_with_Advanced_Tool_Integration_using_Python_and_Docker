@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  # Mock External API Service for agent API tool testing and verification
+  mock-api:
+    image: python:3.11-slim
+    container_name: agent-mock-api
+    working_dir: /app
+    volumes:
+      - ./mock_server.py:/app/mock_server.py:ro
+    command: python /app/mock_server.py 8080
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  # Autonomous AI Agent Core Service
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: autonomous-agent
+    depends_on:
+      mock-api:
+        condition: service_started
+    volumes:
+      # Sibling container Docker socket access
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Persistent workspace mount
+      - ./workspace:/app/workspace
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-mock-key}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o-mini}
+      - OPENAI_API_BASE=${OPENAI_API_BASE:-https://api.openai.com/v1}
+      - WORKSPACE_DIR=/app/workspace
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - MOCK_LLM=${MOCK_LLM:-false}
+    command: ["--goal", "Query the mock API at http://mock-api:8080/api/status and report the system status.", "--auto-eval"]
