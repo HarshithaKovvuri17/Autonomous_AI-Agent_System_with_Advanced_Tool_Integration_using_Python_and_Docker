@@ -101,4 +101,3 @@ class WebSearchTool(BaseTool):
             result = result[:self.max_length] + "\n...[Output truncated to preserve context window]"
 
         return f"Observation: {result}"
-
