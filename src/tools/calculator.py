@@ -139,4 +139,3 @@ class CalculatorTool(BaseTool):
             return "Math Error: Division by zero is undefined."
         except Exception as e:
             return f"Math Evaluation Error: {str(e)}"
-

@@ -107,4 +107,3 @@ class FileSystemTool(BaseTool):
                 return f"File Write Error: Could not write to '{file_path}'. Details: {str(e)}"
 
         return f"Unknown action '{action}'. Valid actions are 'read' and 'write'."
-

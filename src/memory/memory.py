@@ -111,4 +111,3 @@ class Memory:
 
     def __len__(self) -> int:
         return len(self.messages)
-
